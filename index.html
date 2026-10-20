@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="Draw a 6 by 6 puzzle, solve both color layers, or generate a new puzzle with a verified solution.">
+  <title>Puzzle solver</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="solver.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="site-shell">
+    <div class="workspace">
+      <section class="panel editor-panel" aria-labelledby="editor-title">
+        <div class="panel-heading">
+          <h1 id="editor-title">Puzzle board</h1>
+          <span class="dimension-tag">6 × 6</span>
+        </div>
+
+        <div class="palette-label-row">
+          <span class="section-label">Choose a tile</span>
+        </div>
+        <div class="palette" role="group" aria-label="Tile palette">
+          <button class="palette-tool is-selected" type="button" data-symbol="empty" aria-pressed="true" title="Empty cell">
+            <canvas class="tool-preview" width="64" height="64" data-preview-symbol="empty" aria-hidden="true"></canvas>
+            <span>Empty</span>
+          </button>
+          <button class="palette-tool" type="button" data-symbol="square" aria-pressed="false" title="Full square">
+            <canvas class="tool-preview" width="64" height="64" data-preview-symbol="square" aria-hidden="true"></canvas>
+            <span>Square</span>
+          </button>
+          <button class="palette-tool" type="button" data-symbol="lower-left" aria-pressed="false" title="Lower-left triangle">
+            <canvas class="tool-preview" width="64" height="64" data-preview-symbol="lower-left" aria-hidden="true"></canvas>
+            <span>Lower left</span>
+          </button>
+          <button class="palette-tool" type="button" data-symbol="lower-right" aria-pressed="false" title="Lower-right triangle">
+            <canvas class="tool-preview" width="64" height="64" data-preview-symbol="lower-right" aria-hidden="true"></canvas>
+            <span>Lower right</span>
+          </button>
+          <button class="palette-tool" type="button" data-symbol="upper-right" aria-pressed="false" title="Upper-right triangle">
+            <canvas class="tool-preview" width="64" height="64" data-preview-symbol="upper-right" aria-hidden="true"></canvas>
+            <span>Upper right</span>
+          </button>
+          <button class="palette-tool" type="button" data-symbol="upper-left" aria-pressed="false" title="Upper-left triangle">
+            <canvas class="tool-preview" width="64" height="64" data-preview-symbol="upper-left" aria-hidden="true"></canvas>
+            <span>Upper left</span>
+          </button>
+        </div>
+
+        <div class="board-caption">
+          <span class="section-label">Your layout</span>
+          <button id="clear-board" class="text-button" type="button">Clear</button>
+        </div>
+        <div id="editor-board-frame"></div>
+        <p class="board-help">Complementary triangles can combine to make a square.</p>
+
+        <div class="editor-actions">
+          <button id="load-example" class="button button-secondary" type="button">Load example</button>
+          <button id="generate-puzzle" class="button button-secondary" type="button">Generate puzzle</button>
+          <button id="solve-puzzle" class="button button-primary" type="button">Solve puzzle</button>
+        </div>
+        <p id="editor-status" class="inline-status" role="status" aria-live="polite">Example puzzle loaded. Edit any cell to make it your own.</p>
+      </section>
+
+      <section class="panel solution-panel" aria-labelledby="solution-title">
+        <div class="panel-heading">
+          <h2 id="solution-title">Solution</h2>
+          <span id="solution-status-tag" class="solution-tag is-idle">Not solved</span>
+        </div>
+
+        <div id="solution-empty" class="solution-empty">
+          <h3>No solution yet</h3>
+          <p>Draw a puzzle or generate one to get started.</p>
+        </div>
+
+        <div id="solution-content" class="solution-content" hidden>
+          <div id="solution-summary" class="solution-summary"></div>
+          <div id="solution-result" aria-live="polite"></div>
+        </div>
+
+        <div id="solution-failure" class="solution-failure" hidden>
+          <h3>No solution found</h3>
+          <p id="failure-copy">This board doesn't have a solution with the current piece set. Check the tiles and try again.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
