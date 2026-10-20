@@ -26,7 +26,7 @@ button { font: inherit; }
 button:focus-visible { outline: 3px solid rgba(49, 89, 223, .6); outline-offset: 3px; }
 [hidden] { display: none !important; }
 
-.site-shell { max-width: 1320px; margin: 0 auto; padding: 28px; }
+.site-shell { max-width: 1200px; margin: 0 auto; padding: 28px; }
 .site-header { max-width: 900px; margin: 0 auto 24px; }
 .site-header h1 { margin: 0 0 6px; font-size: 21px; font-weight: 750; letter-spacing: -.025em; line-height: 1.25; }
 .site-header h1 a { color: inherit; text-decoration: none; }
