@@ -1,28 +1,31 @@
-# Puzzle solver
+# Shape by Shape Solver
 
-A static browser app for the ThinkFun [Shape by Shape](https://www.amazon.com/dp/B00000IRZ4) puzzle. Draw a 6 × 6 board, solve both color layers, or generate a fully randomized puzzle whose red and yellow layers are both solvable. The solution stays hidden until requested.
+A static browser-based solver for [ThinkFun’s Shape by Shape](https://www.thinkfun.com/) spatial puzzle. Draw the red and yellow shapes from a puzzle, solve both layers, or generate a randomized challenge with a verified solution that stays hidden until revealed.
 
-## Run
+**Play online:** https://scottmangiapane.github.io/shape-by-shape-solver/  
+**Source code:** https://github.com/scottmangiapane/shape-by-shape-solver
 
-Open `index.html` in a modern browser. No install or server is needed. To publish it, upload `index.html`, `styles.css`, `app.js`, and `solver.js` to any static host.
+## How to play
 
-## Use
+1. Choose a tile shape and click cells to draw the puzzle. Empty cells matter.
+2. Select **Solve puzzle** to find the red and yellow piece placements.
+3. Select **Generate puzzle** for a new solvable challenge, then reveal the solution when you’re ready.
 
-1. Choose a tile and click cells to draw the puzzle. Empty cells matter.
-2. Click **Solve puzzle** to find both layers.
-3. Click **Generate puzzle** for a solvable challenge, then **Reveal solution** when ready.
+The combined solution view shows both colors at once, outlines only actual piece boundaries, and includes row/column markers and piece starting coordinates.
 
-The combined solution view shows both colors at once, outlines only the edges between actual pieces, and includes row/column markers and piece starting coordinates.
+## Run locally
+
+Open `index.html` in a modern browser. No install, build step, or server is required. To host the app, publish `index.html`, `styles.css`, `app.js`, and `solver.js` to any static host. The live site is hosted with GitHub Pages.
 
 ## Tests
 
-Run the optional solver tests with Node.js. They cover solving, randomized puzzle generation, and fast rejection of impossible all-red/all-yellow boards:
+The optional solver tests require Node.js:
 
 ```sh
 node tests/solver.test.js
 ```
 
-The solver checks the total shape area before searching and uses a cell-constrained search with a safety limit to avoid locking up on pathological inputs.
+They cover solving, randomized puzzle generation, and fast rejection of impossible all-red/all-yellow boards. The solver checks total shape area before searching and uses a cell-constrained search with a safety limit to avoid locking up on pathological inputs.
 
 ## Puzzle rules
 
@@ -30,12 +33,13 @@ The solver checks the total shape area before searching and uses a cell-constrai
 - Complementary triangles can combine to form a square.
 - Pieces may rotate or reflect; each piece is used exactly once.
 
-## Files
+## Project files
 
-- `index.html` — page structure
+- `index.html` — page structure and project introduction
 - `styles.css` — responsive interface
 - `app.js` — canvas rendering and interaction
 - `solver.js` — puzzle rules, solver, and generator
+- `tests/solver.test.js` — solver and generator tests
 
 ## License
 
